@@ -114,6 +114,14 @@ class Images {
       window.addEventListener('resize', () => {
          this.imagePlane.material.uniforms.uAspect.value = tVec2a.set(Store.sizes.width, Store.sizes.height)
          this.imagePlane.material.uniforms.uPixelRatio.value = window.devicePixelRatio
+
+         this.meshStorage.forEach( (mesh, i) => {
+            const width = this.imageStorage[i].getBoundingClientRect().width
+            const height = this.imageStorage[i].getBoundingClientRect().height
+            mesh.scale.set(width, height, 1)
+            
+            this.setPositions(mesh, this.imageStorage[i])
+         })
       })
    }
 

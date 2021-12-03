@@ -25,12 +25,12 @@ class World {
    }
 
    setCamera() {
-      const perspective = 45
-      const fov = (180 * (2 * Math.atan((Store.sizes.height / 2) / perspective))) / Math.PI;
+      this.perspective = 45
+      const fov = (180 * (2 * Math.atan((Store.sizes.height / 2) / this.perspective))) / Math.PI;
 
       this.camera = new PerspectiveCamera(fov, Store.sizes.width / Store.sizes.height, 0.01, 1000)
 
-      this.camera.position.set(0, 0, perspective);  
+      this.camera.position.set(0, 0, this.perspective);  
 
       this.add(this.camera)
    }
@@ -58,6 +58,7 @@ class World {
          Store.sizes.height = window.innerHeight
      
          // Update camera
+         this.camera.fov = (180 * (2 * Math.atan((Store.sizes.height / 2) / this.perspective))) / Math.PI;
          this.camera.aspect = Store.sizes.width / Store.sizes.height
          this.camera.updateProjectionMatrix()
      
