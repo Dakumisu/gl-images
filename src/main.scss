@@ -3,3 +3,42 @@
 @import './scss/utils/_reset';
 @import './scss/utils/_breakpoints';
 
+.container {
+   width: 50vw;
+   position: relative;
+   margin: auto;
+}
+
+.slider {
+   width: 50%;
+   margin: auto;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.images {
+   opacity: .6;
+   margin: 50px 0;
+   // visibility: hidden;
+   display: flex;
+
+   &_left {
+       align-self: flex-start;
+   }
+
+   &_right {
+       align-self: flex-end;
+   }
+}
+
+.webgl {
+   width: 100vw;
+   height: 100vh;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 2;
+   // display: none;
+}

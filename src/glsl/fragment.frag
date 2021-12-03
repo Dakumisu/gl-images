@@ -4,15 +4,15 @@ precision highp float;
 
 uniform float uTime;
 uniform float uAlpha;
-uniform vec3 uColor;
 uniform vec3 uResolution;
+uniform sampler2D uTexture;
 
 varying vec2 vUv;
-varying vec3 vPos;
 
 void main() {
-  vec3 color = vec3(uColor);
+  vec4 texture = texture2D(uTexture, vUv);
 
-  gl_FragColor = vec4(color, uAlpha);
-  gl_FragColor = vec4(vUv, 0., uAlpha);
+  texture.a = uAlpha;
+
+  gl_FragColor = texture;
 }

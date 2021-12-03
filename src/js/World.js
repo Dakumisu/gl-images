@@ -25,8 +25,12 @@ class World {
    }
 
    setCamera() {
-      this.camera = new PerspectiveCamera(75, Store.sizes.width / Store.sizes.height, 0.01, 1000)
-      this.camera.position.set(0, 0, 3);  
+      const perspective = 45
+      const fov = (180 * (2 * Math.atan((Store.sizes.height / 2) / perspective))) / Math.PI;
+
+      this.camera = new PerspectiveCamera(fov, Store.sizes.width / Store.sizes.height, 0.01, 1000)
+
+      this.camera.position.set(0, 0, perspective);  
 
       this.add(this.camera)
    }
@@ -40,7 +44,7 @@ class World {
       })
       this.renderer.setSize(Store.sizes.width, Store.sizes.height)
       this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-      this.renderer.setClearColor(0x222222, 1)
+      // this.renderer.setClearColor(0x222222, 1)
    }
 
    add(object) {
